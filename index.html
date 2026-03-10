@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>PrimeClapped Games - Pantalla grande</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #1f2937 0, #050816 45%, #020617 100%);
+      font-family: system-ui, sans-serif;
+      color: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(90deg, #020617, #050816, #020617);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #4b9fff, #a855f7, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #020617;
+      box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #4b9fff, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .url-box {
+      display: flex;
+      gap: 10px;
+      width: 60%;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #111827;
+      color: #f9fafb;
+      border: 1px solid #374151;
+    }
+
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(90deg, #4b9fff, #a855f7);
+      color: #020617;
+      font-weight: 700;
+    }
+
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">N</div>
+      <div class="logo-text">PrimeClapped Games (Pon el enlace de la pagina)</div>
+    </div>
+
+    <div class="url-box">
+      <input id="urlInput" type="text" placeholder="Escribe la URL del juego o página..." />
+      <button onclick="loadPage()">Cargar</button>
+    </div>
+  </header>
+
+  <iframe id="viewer" src=""></iframe>
+
+  <script>
+    function loadPage() {
+      const url = document.getElementById("urlInput").value.trim();
+      const viewer = document.getElementById("viewer");
+
+      if (!url) return;
+
+      // Si no tiene http, se lo añadimos
+      const finalURL = url.startsWith("https") ? url : "https://edujojo.world/" + url;
+
+      viewer.src = finalURL;
+    }
+  </script>
+
+</body>
+</html>
+
